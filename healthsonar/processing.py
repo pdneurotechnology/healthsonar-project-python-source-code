@@ -1,7 +1,7 @@
-import logging as log
 from typing import List
 
 import pandas as pd
+import recording as log
 
 
 def process_data(

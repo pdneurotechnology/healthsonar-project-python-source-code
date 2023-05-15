@@ -1,18 +1,22 @@
 import json
-import logging as log
 import sys
 import time
 from pathlib import Path
 
 import pandas as pd
-
 import processing as proc
+import recording as log
 
 # Define funtion
 # =============================================================================
 
 
 def input_to_output():
+    """
+    A function to turn the data of a set of csv raw files into a set of
+    observations.
+    """
+
     input_json = sys.argv[1]
     df = pd.read_json(input_json)
 
@@ -71,11 +75,3 @@ def input_to_output():
     # Write observations json to file
     with open(output_json_path, "w") as f:
         f.write(observations_json)
-
-
-# Call function
-# =============================================================================
-
-
-if __name__ == "__main__":
-    input_to_output()

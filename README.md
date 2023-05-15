@@ -1,6 +1,6 @@
 # README
 
-You will only update the `processing.py` file, by adding the processing code inside the `process_data` function. This function already parses the relevant data from the raw data files into 3 dataframes. The results of the processing must be structured in the following way:
+The processing of the raw data will happen solely in the `processing.py` file, by adding code inside the `process_data` function. This function already parses the relevant data from the raw data files into 3 dataframes. The results of the processing must be structured in the following way:
 
 ```python
 data = [
@@ -43,4 +43,14 @@ Inside your processing script you can log into the terminal any message by calli
 log.create_log("This is a log message")
 ```
 
-Said function creates a json message which includes the message and a Unix timestamp of the current time.
+Said function creates a json message which includes the message and a Unix timestamp of the current time. Having created a set of observations, you can run the whole pipeline through the terminal as follows:
+
+```bash
+python3 middleware.py /path_to_input_json_file.json
+```
+
+You can use the `input.json` existing in this repository as following:
+
+```bash
+python3 middleware.py ./input.json
+```

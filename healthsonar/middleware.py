@@ -1,15 +1,18 @@
 import json
+import logging as log
 import sys
 import time
 from pathlib import Path
 
 import pandas as pd
 
+import processing as proc
+
 # Define funtion
 # =============================================================================
 
 
-def parse_files():
+def input_to_output():
     input_json = sys.argv[1]
     df = pd.read_json(input_json)
 
@@ -64,6 +67,18 @@ def parse_files():
     print(json.dumps(heart_rate_log))
     print(json.dumps(activity_log))
 
+    # Load data from the csvc files
+    # =========================================================================
+
+    respiration_df = pd.read_csv(respiration_csv_path)
+    heart_rate_df = pd.read_csv(heart_rate_csv_path)
+    activity_df = pd.read_csv(activity_csv_path)
+
+    # Process data
+    # =========================================================================
+
+    data = proc.process_data(respiration_df, heart_rate_df, activity_df)
+
     # Create observation json
     # =========================================================================
 
@@ -75,43 +90,13 @@ def parse_files():
             str(activity_csv_path),
         ],
         "Version": "1.0",
-        "Data": [
-            {"Code": "HR", "Value": 123, "Timestamp": 1234124512},
-            {"Code": "RR", "Value": 123, "Timestamp": 1234124512},
-            {"Code": "REC", "Value": 123, "Timestamp": 1234124512},
-            {"Code": "APNEA", "Value": 123, "Timestamp": 1234124512},
-            {"Code": "HYPOPNEA", "Value": 123, "Timestamp": 1234124512},
-            {
-                "Code": "SLEEP_STAGE_W",
-                "Value": 123,
-                "Timestamp": 1234124512,
-            },
-            {
-                "Code": "SLEEP_STAGE_N1",
-                "Value": 123,
-                "Timestamp": 1234124512,
-            },
-            {
-                "Code": "SLEEP_STAGE_N2",
-                "Value": 123,
-                "Timestamp": 1234124512,
-            },
-            {
-                "Code": "SLEEP_STAGE_N3",
-                "Value": 123,
-                "Timestamp": 1234124512,
-            },
-            {
-                "Code": "SLEEP_STAGE_R",
-                "Value": 123,
-                "Timestamp": 1234124512,
-            },
-        ],
+        "Data": data,
     }
 
+    # Write the dictionary to a json string
     observations_json = json.dumps(observations, indent=4)
 
-    # Write observation json to file
+    # Write observations json to file
     with open(output_json_path, "w") as f:
         f.write(observations_json)
 
@@ -121,4 +106,4 @@ def parse_files():
 
 
 if __name__ == "__main__":
-    parse_files()
+    input_to_output()

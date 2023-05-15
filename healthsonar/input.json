@@ -1,6 +1,14 @@
 {
-    "RespInputFile": ["./tmp/f612e8ff-d4f4-4f6d-ad80-350f80b0243d_resp.csv"],
-    "HRInputFile": ["./tmp/f612e8ff-d4f4-4f6d-ad80-350f80b0243d_hr.csv"],
-    "ActivityInputFile": ["./tmp/f612e8ff-d4f4-4f6d-ad80-350f80b0243d_act.csv"],
-    "OutputObservationsFile": ["./tmp/observations.json"]
+    "RespInputFile": [
+        "./tmp/f612e8ff-d4f4-4f6d-ad80-350f80b0243d_resp.csv"
+    ],
+    "HRInputFile": [
+        "./tmp/f612e8ff-d4f4-4f6d-ad80-350f80b0243d_hr.csv"
+    ],
+    "ActivityInputFile": [
+        "./tmp/f612e8ff-d4f4-4f6d-ad80-350f80b0243d_act.csv"
+    ],
+    "OutputObservationsFile": [
+        "./tmp/observations.json"
+    ]
 }

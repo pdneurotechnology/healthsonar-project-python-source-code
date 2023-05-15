@@ -1,0 +1,61 @@
+{
+    "Timestamp": 1684155120,
+    "InputFiles": [
+        "tmp/f612e8ff-d4f4-4f6d-ad80-350f80b0243d_resp.csv",
+        "tmp/f612e8ff-d4f4-4f6d-ad80-350f80b0243d_hr.csv",
+        "tmp/f612e8ff-d4f4-4f6d-ad80-350f80b0243d_act.csv"
+    ],
+    "Version": "1.0",
+    "Data": [
+        {
+            "Code": "HR",
+            "Value": 123,
+            "Timestamp": 1234124512
+        },
+        {
+            "Code": "RR",
+            "Value": 123,
+            "Timestamp": 1234124512
+        },
+        {
+            "Code": "REC",
+            "Value": 123,
+            "Timestamp": 1234124512
+        },
+        {
+            "Code": "APNEA",
+            "Value": 123,
+            "Timestamp": 1234124512
+        },
+        {
+            "Code": "HYPOPNEA",
+            "Value": 123,
+            "Timestamp": 1234124512
+        },
+        {
+            "Code": "SLEEP_STAGE_W",
+            "Value": 123,
+            "Timestamp": 1234124512
+        },
+        {
+            "Code": "SLEEP_STAGE_N1",
+            "Value": 123,
+            "Timestamp": 1234124512
+        },
+        {
+            "Code": "SLEEP_STAGE_N2",
+            "Value": 123,
+            "Timestamp": 1234124512
+        },
+        {
+            "Code": "SLEEP_STAGE_N3",
+            "Value": 123,
+            "Timestamp": 1234124512
+        },
+        {
+            "Code": "SLEEP_STAGE_R",
+            "Value": 123,
+            "Timestamp": 1234124512
+        }
+    ]
+}

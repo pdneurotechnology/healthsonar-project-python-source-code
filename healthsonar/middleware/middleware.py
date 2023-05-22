@@ -7,14 +7,10 @@ import pandas as pd
 import processing as proc
 import recording as log
 
-# Define funtion
-# =============================================================================
-
 
 def input_to_output():
     """
-    A function to turn the data of a set of csv raw files into a set of
-    observations.
+    Turn the data of a set of csv files into a dictionary of observations.
     """
 
     input_json = sys.argv[1]
@@ -43,7 +39,7 @@ def input_to_output():
     else:
         log.create_log(f"Could not find {respiration_csv_path.name}!")
 
-    # Load data from the csvc files
+    # Load data from the csv files
     # =========================================================================
 
     respiration_df = pd.read_csv(respiration_csv_path)
@@ -72,6 +68,6 @@ def input_to_output():
     # Write the dictionary to a json string
     observations_json = json.dumps(observations, indent=4)
 
-    # Write observations json to file
+    # Write the observations json file
     with open(output_json_path, "w") as f:
         f.write(observations_json)

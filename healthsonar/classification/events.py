@@ -1,27 +1,21 @@
-import json
-from datetime import datetime
+# %%
+
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
+data_path = Path("/home/adam/Datasets/healthsonar-patients/")
+
 event_files = [
-    "HSP007_Events.txt",
-    "HSP010_Events.txt",
-    "HSP011_Events.txt",
     "HSP001_Events.txt",
-    "HSP002_Events.txt",
-    "HSP003_Events.txt",
-    "HSP004_Events.txt",
-    "HSP006_Events.txt",
-    "HSP008_Events.txt",
-    "HSP009_Events.txt",
-    "HSP014_Events.txt",
 ]
 
 for file in event_files:
-    print(file)
+    events = pd.read_csv(
+        Path(data_path, "psg", "Events", file), encoding="latin-1", sep=";"
+    )
 
-    events = pd.read_csv(file, encoding="latin-1", sep="\t")
     events["TimeStart"] = (
         events["Time [hh:mm:ss]"]
         .apply(lambda x: x.split(" ")[0])
@@ -57,11 +51,11 @@ for file in event_files:
 
     first_date = df.iloc[0, -2]
     last_date = df.iloc[-1, -2]
+
     dates, lengs, temps = [], [], []
     starts_new = []
     labels_new = []
     durations_new = []
-
     flag = False
 
     for start in pd.date_range(first_date, last_date, freq="30s"):
@@ -132,4 +126,7 @@ for file in event_files:
 
     pd.DataFrame(
         {"label": labels_new, "duration": [int(i) for i in durations_new]}
-    ).to_csv(f"{file.split('_')[0]}.csv")
+    ).to_csv(
+        Path(data_path, "psg", "Events", file.split("_")[0] + ".csv"),
+        index=False,
+    )

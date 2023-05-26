@@ -13,7 +13,7 @@ event_files = [
 
 for file in event_files:
     events = pd.read_csv(
-        Path(data_path, "psg", "Events", file), encoding="latin-1", sep=";"
+        Path(data_path, "data", "events", file), encoding="latin-1", sep=";"
     )
 
     events["TimeStart"] = (
@@ -127,6 +127,6 @@ for file in event_files:
     pd.DataFrame(
         {"label": labels_new, "duration": [int(i) for i in durations_new]}
     ).to_csv(
-        Path(data_path, "psg", "Events", file.split("_")[0] + ".csv"),
+        Path(data_path, "data", "events", file.split("_")[0] + ".csv"),
         index=False,
     )

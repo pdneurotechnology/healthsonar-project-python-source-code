@@ -69,14 +69,6 @@ for folder, rsp in zip(folders, rsps):
 
 # %%
 
-# plt.plot(chest[100000:110000])
-# plt.show()
-
-# %%
-
-# rsp_df
-# %%
-
 for col in cols:
     print(col)
     plt.scatter(x=rsp_df.index, y=rsp_df[col], marker="x")
